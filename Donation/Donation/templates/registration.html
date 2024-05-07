@@ -1,0 +1,381 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('donate') }}">Donate</a></li>
+            <li><a href="{{ url_for('view_organizations') }}">View Organizations</a></li>
+            <li><a href="{{ url_for('new_organization') }}">New Organization</a></li>
+            <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+        </ul>
+    </nav>-->
+<!--<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: "Ubuntu", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.log-in {
+  border: 0;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.navbar {
+  height: 90px;
+  background-color: #E5BEEC;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo i {
+  color: black;
+  font-size: 30px;
+}
+
+.navbar .logo a {
+  font-size: 24px;
+  font-weight: 700;
+  color: black;
+  margin-left: 12px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.menu-links {
+  display: flex;
+  gap: 24px;
+  border-right: 1px solid #999999;
+  padding-inline: 24px;
+}
+
+.menu-links a {
+  font-weight: 500;
+  color: black;
+  padding: 8px 16px;
+}
+.menu-links a:hover {
+  color: white;
+}
+.log-in {
+  font-weight: 500;
+  padding: 12px 22px;
+  background-color: transparent;
+  color: black;
+  border-radius: 10px;
+  border: 2px solid #0aa5ff;
+  transition: 0.2s;
+}
+.log-in:hover {
+  background-color: #0aa5ff;
+  color: white;
+}
+
+.menu-btn {
+  font-size: 32px;
+  color: white;
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: 53rem) {
+  .menu {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+}
+</style>
+  </head>
+<body>
+    <nav class="navbar">
+      <div class="logo">
+<i class="fa-solid fa-hand-holding-heart"></i>
+        <a href="#">Charity Forum</a>
+      </div>
+      <div class="menu">
+        <div class="menu-links">
+          <a href="{{ url_for('home') }}">Home</a>
+          <a href="#">About Us</a>
+          <a href="{{ url_for('donate') }}">Donate</a>
+          <a href="{{ url_for('view_organizations') }}">The Org.</a>
+          <a href="{{ url_for('new_organization') }}">New Organisation</a>
+	        <a href="{{ url_for('contact_us') }}">Contact Us</a>
+        </div>
+        
+        <a class="log-in" href="{{ url_for('login') }}">Log In</a>
+        
+     </div>
+      <div class="menu-btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </nav>
+    <h1>Registration</h1>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+    <form action="{{ url_for('registration') }}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="username">Phone Number:</label>
+        <input type="text" id="username" name="username" required>&nbsp&nbsp&nbsp&nbsp&nbsp*This is your username<br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        <input type="submit" value="Register">
+    </form>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a>.</p>
+</body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Page</title>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+
+    body {
+      background-color: #f0f2f5; 
+    }
+    .container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    .card {
+      max-width: 400px;
+      background-color: #fff;
+      border: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-title {
+      margin-bottom: 30px;
+    }
+
+    .btn-block {
+      margin-top: 20px;
+    }
+#image
+{
+     height:500px;
+}
+.log-in {
+  font-weight: 500;
+  padding: 12px 22px;
+  background-color: transparent;
+  color: black;
+  border-radius: 10px;
+  border: 2px solid #0aa5ff;
+  transition: 0.2s;
+}
+.log-in:hover {
+  background-color: #0aa5ff;
+  color: white;
+}
+.cont{
+  padding-top:20px;
+  margin-left:450px;
+  color:white;
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color:#654E92;
+  font-family: "Ubuntu", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+
+.navbar {
+  height: 90px;
+  background-color: #E5BEEC;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo i {
+  color: black;
+  font-size: 30px;
+}
+
+.navbar .logo a {
+  font-size: 24px;
+  font-weight: 700;
+  color: black;
+  margin-left: 12px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.menu-links {
+  display: flex;
+  gap: 24px;
+  border-right: 1px solid #999999;
+  padding-inline: 24px;
+}
+
+.menu-links a {
+  font-weight: 500;
+  color: black;
+  padding: 8px 16px;
+}
+.menu-links a:hover {
+  color: white;
+}
+
+.menu-btn {
+  font-size: 32px;
+  color: white;
+  display: none;
+  cursor: pointer;
+}
+#xy
+{color:white;}
+
+.copyright {
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background:#191825;
+    font-weight: 300;
+    color:white;
+    margin-top: 20px;}
+
+  </style>
+</head>
+<body>
+
+ <nav class="navbar">
+      <div class="logo">
+<i class="fa-solid fa-hand-holding-heart"></i>
+        <a href="#">Charity Forum</a>
+      </div>
+      <div class="menu">
+        <div class="menu-links">
+          <a href="{{ url_for('home') }}">Home</a>
+          <a href="#about">About Us</a>
+          <a href="{{ url_for('donate') }}">Donate</a>
+          <a href="{{ url_for('view_organizations') }}">The Org.</a>
+          <a href="{{ url_for('new_organization') }}">New Organisation</a>
+	        <a href="{{ url_for('contact_us') }}">Contact Us</a>
+        </div>
+      
+      </div>
+      <div class="menu-btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </nav>
+    {% if error %}
+    <p>{{ error }}</p>
+{% endif %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center">Registration Form</h2>
+       <!-- {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}-->
+    <form action="{{ url_for('registration') }}" method="post">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" name="username" placeholder="Enter your phone number" required>
+                 <p>*This is your UserName</p>
+              </div>
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <img src="../static/char.jpg" alt="Image" class="img-fluid" id="image">
+      </div>
+    </div>
+  </div>
+<strong><p class="cont">Already Have an Account?<a class="log-in"  id="xy" href="{{ url_for('login') }}">Login Here</a></p></strong>
+<footer class="copyright">
+  <p>copyright @ Charity Forum</p><br>
+   <p>Supporting lives to design and make a better world</p>
+    </footer>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

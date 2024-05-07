@@ -1,0 +1,205 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <title>Organizations</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('donate') }}">Donate</a></li>
+            <li><a href="{{ url_for('view_organizations') }}">View Organizations</a></li>
+            <li><a href="{{ url_for('new_organization') }}">New Organization</a></li>
+            <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+        </ul>
+    </nav>-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organizations</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: "Ubuntu", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.log-in {
+  border: 0;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.navbar {
+  height: 90px;
+  background-color: #E5BEEC;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo i {
+  color: black;
+  font-size: 30px;
+}
+
+.navbar .logo a {
+  font-size: 24px;
+  font-weight: 700;
+  color: black;
+  margin-left: 12px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.menu-links {
+  display: flex;
+  gap: 24px;
+  border-right: 1px solid #999999;
+  padding-inline: 24px;
+}
+
+.menu-links a {
+  font-weight: 500;
+  color: black;
+  padding: 8px 16px;
+}
+.menu-links a:hover {
+  color: white;
+}
+.log-in {
+  font-weight: 500;
+  padding: 12px 22px;
+  background-color: transparent;
+  color: black;
+  border-radius: 10px;
+  border: 2px solid #0aa5ff;
+  transition: 0.2s;
+}
+.log-in:hover {
+  background-color: #0aa5ff;
+  color: white;
+}
+
+.menu-btn {
+  font-size: 32px;
+  color: white;
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: 53rem) {
+  .menu {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+}
+
+.table-container {
+  width: 90%;
+  align-items: center;
+  overflow-x: auto;
+  margin: 20px auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid black;
+}
+
+th {
+  background-color: #E5BEEC;
+}
+.copyright {
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background:#191825;
+    font-weight: 300;
+    color:white;
+    margin-top: 20px;}
+</style>
+</head>
+<body>
+    <nav class="navbar">
+      <div class="logo">
+        <i class="fa-solid fa-hand-holding-heart"></i>
+        <a href="#">Charity Forum</a>
+      </div>
+      <div class="menu">
+        <div class="menu-links">
+          <a href="{{ url_for('home') }}">Home</a>
+          <a href="#about">About Us</a>
+          <a href="{{ url_for('donate') }}">Donate</a>
+          <a href="{{ url_for('view_organizations') }}">The Org.</a>
+          <a href="{{ url_for('new_organization') }}">New Organisation</a>
+          <a href="{{ url_for('contact_us') }}">Contact Us</a>
+        </div>
+      </div>
+      <div class="menu-btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </nav>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Organization Name</th>
+            <th>Org. Head</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for organization in organizations %}
+          <tr>
+            <td>{{ organization.organization_name }}</td>
+            <td>{{ organization.orghead }}</td>
+            <td>{{ organization.email }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <footer class="copyright">
+      <p>copyright @ Charity Forum</p><br>
+       <p>Supporting lives to design and make a better world</p>
+    </footer>
+</body>
+</html>
+    
+    

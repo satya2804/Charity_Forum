@@ -1,0 +1,281 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <title>Payments</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('donate') }}">Donate</a></li>
+            <li><a href="{{ url_for('view_organizations') }}">View Organizations</a></li>
+            <li><a href="{{ url_for('new_organization') }}">New Organization</a></li>
+            <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+        </ul>
+    </nav>-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payments</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: "Ubuntu", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+
+.navbar {
+  height: 90px;
+  background-color: #E5BEEC;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo i {
+  color: black;
+  font-size: 30px;
+}
+
+.navbar .logo a {
+  font-size: 24px;
+  font-weight: 700;
+  color: black;
+  margin-left: 12px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.menu-links {
+  display: flex;
+  gap: 24px;
+  border-right: 1px solid #999999;
+  padding-inline: 24px;
+}
+
+.menu-links a {
+  font-weight: 500;
+  color: black;
+  padding: 8px 16px;
+}
+.menu-links a:hover {
+  color: white;
+}
+
+
+.menu-btn {
+  font-size: 32px;
+  color: white;
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: 53rem) {
+  .menu {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+}
+
+
+.form {
+  background-color: #fff;
+  box-shadow: 0 10px 60px rgb(218, 229, 255);
+  border: 1px solid rgb(159, 159, 160);
+  border-radius: 20px;
+  padding: 2rem .7rem .7rem .7rem;
+  text-align: center;
+  font-size: 1.125rem;
+  max-width: 320px;
+  margin-top:50px;
+
+  
+}
+
+.form-title {
+  color: #000000;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.form-paragraph {
+  margin-top: 10px;
+  font-size: 0.9375rem;
+  color: rgb(105, 105, 105);
+}
+
+.drop-container {
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-top: 2.1875rem;
+  border-radius: 10px;
+  border: 2px dashed rgb(171, 202, 255);
+  color: #444;
+  cursor: pointer;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.drop-container:hover {
+  background: rgba(0, 140, 255, 0.164);
+  border-color: rgba(17, 17, 17, 0.616);
+}
+
+.drop-container:hover .drop-title {
+  color: #222;
+}
+
+.drop-title {
+  color: #444;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  transition: color .2s ease-in-out;
+}
+
+#payment_screenshot {
+  width: 350px;
+  max-width: 100%;
+  color: #444;
+  padding: 2px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid rgba(8, 8, 8, 0.288);
+}
+
+#payment_screenshot::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #084cdf;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+#payment_screenshot::file-selector-button:hover {
+  background: #0d45a5;
+}
+#uploadButton {
+  width: 150px;
+  height: 40px;
+  border: 3px solid #315cfd;
+  border-radius: 45px;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: #D5EEFF;
+  font-size: 1em;
+  font-weight: 450;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#uploadButton:hover {
+  background: #315cfd;
+  color:black;
+  font-size: 1em;
+}
+.payment
+{
+   width:300px;
+   padding-top:20px;
+}
+.pay{
+  background-color:#FFF2CC;
+}
+.copyright {
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background:#191825;
+    font-weight: 300;
+    color:white;
+    margin-top: 20px;}
+
+</style>
+  </head>
+<body>
+    <nav class="navbar">
+      <div class="logo">
+<i class="fa-solid fa-hand-holding-heart"></i>
+        <a href="#">Charity Forum</a>
+      </div>
+      <div class="menu">
+        <div class="menu-links">
+          <a href="{{ url_for('home') }}">Home</a>
+          <a href="#about">About Us</a>
+          <a href="{{ url_for('donate') }}">Donate</a>
+          <a href="{{ url_for('view_organizations') }}">The Org.</a>
+          <a href="{{ url_for('new_organization') }}">New Organisation</a>
+	        <a href="{{ url_for('contact_us') }}">Contact Us</a>
+        </div>
+      
+      </div>
+      <div class="menu-btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </nav>
+    <center>
+      <div class="pay">
+    <h1>Payments</h1>
+   <!--<img src="../static/payment.jpg" alt="Payment Image" width="300">
+    <form action="{{ url_for('make_payment') }}" method="post" enctype="multipart/form-data">
+        <label for="payment_screenshot">Upload Payment Screenshot:</label>
+        <input type="file" id="payment_screenshot" name="payment_screenshot" accept="image/*" required>
+        <input type="submit" value="Submit Payment">
+    </form></body></center>-->
+    <img src="../static/pay.jpg" alt="payment image"  class="payment">
+    <form action="{{ url_for('make_payment') }}"  class="form" method="post" enctype="multipart/form-data">
+      <span class="form-title">Upload your file</span>
+      <p class="form-paragraph">
+          File should be an image
+        </p>
+       <label for="payment_screenshot" class="drop-container">
+      <span class="drop-title">Drop files here</span>
+      <input type="file" accept="image/*" required="" id="payment_screenshot" name="payment_screenshot" required>
+     <button type=" submit" class="btn btn-primary btn-block" id="uploadButton">Submit</button>
+    </label>
+    </form></center></div>
+    <footer class="copyright">
+      <p>copyright @ Charity Forum</p><br>
+       <p>Supporting lives to design and make a better world</p>
+    </footer>
+    </body>
+    </html>
+
+
+    

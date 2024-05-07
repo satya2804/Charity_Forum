@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Donation</title>
+</head>
+<body>
+    <h1>Add Donation</h1>
+    <form action="{{ url_for('add_donation') }}" method="post">
+        <label for="organization_name">Organization Name:</label>
+        <input type="text" name="organization_name" required><br>
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br>
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" step="0.01" required><br>
+        <label for="username">Username:</label>
+        <input type="text" name="username" required><br>
+        <input type="submit" value="Add Donation">
+    </form>
+</body>
+</html>

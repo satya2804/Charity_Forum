@@ -1,0 +1,223 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <title>Donate</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('donate') }}">Donate</a></li>
+            <li><a href="{{ url_for('view_organizations') }}">View Organizations</a></li>
+            <li><a href="{{ url_for('new_organization') }}">New Organization</a></li>
+            <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+        </ul>
+    </nav>-->
+    
+    <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<title>donate</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: "Ubuntu", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.log-in {
+  border: 0;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.navbar {
+  height: 90px;
+  background-color: #E5BEEC;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo i {
+  color: black;
+  font-size: 30px;
+}
+
+.navbar .logo a {
+  font-size: 24px;
+  font-weight: 700;
+  color: black;
+  margin-left: 12px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.menu-links {
+  display: flex;
+  gap: 24px;
+  border-right: 1px solid #999999;
+  padding-inline: 24px;
+}
+
+.menu-links a {
+  font-weight: 500;
+  color: black;
+  padding: 8px 16px;
+}
+.menu-links a:hover {
+  color: white;
+}
+
+.menu-btn {
+  font-size: 32px;
+  color: white;
+  display: none;
+  cursor: pointer;
+}
+.custom-form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .copyright {
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background:#191825;
+    font-weight: 300;
+    color:white;
+    margin-top: 20px;}
+
+    .log-in {
+  font-weight: 500;
+  padding: 12px 22px;
+  background-color: transparent;
+  color: black;
+  border-radius: 10px;
+  border: 2px solid #0aa5ff;
+  transition: 0.2s;
+}
+.log-in:hover {
+  background-color: #0aa5ff;
+  color: white;
+}
+.container
+{
+  background-color: #FFC95F;
+  padding-top:20px;
+}
+
+@media (max-width: 53rem) {
+  .menu {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+}
+#head
+{
+  padding-top:10px;
+}
+
+</style>
+  </head>
+<body>
+    <nav class="navbar">
+      <div class="logo">
+<i class="fa-solid fa-hand-holding-heart"></i>
+        <a href="#">Charity Forum</a>
+      </div>
+      <div class="menu">
+        <div class="menu-links">
+          <a href="{{ url_for('home') }}">Home</a>
+          <a href="#">About Us</a>
+          <a href="{{ url_for('donate') }}">Donate</a>
+          <a href="{{ url_for('view_organizations') }}">The Org.</a>
+          <a href="{{ url_for('new_organization') }}">New Organisation</a>
+	        <a href="{{ url_for('contact_us') }}">Contact Us</a>
+        </div>
+        <!--<button class="log-in">-->
+        <!--<a class="log-in" href="{{ url_for('login') }}">Log In</a>-->
+            <!--</button>-->
+      </div>
+      <div class="menu-btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </nav>
+    <h1 class="display-4 text-center mb-4" id="head">Donate<i class="fa-solid fa-hand-holding-dollar fa-bounce" style="color: #e7b913;"></i></h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <div class="container">
+    <form action="{{ url_for('donate') }}"  class="custom-form" method="post">
+      <div class="form-group">
+        <label for="user_name">Your Name:</label>
+        <input type="text" id="user_name"   class="form-control" name="user_name" value="{{ user_name }}" required><br>
+</div>
+        {% if is_org %}
+           <div class="form-group">
+            <label for="username">Organization Email:</label> 
+            <input type="text" id="username" name="username" class="form-control" value="{{ username }}" readonly><br></div>
+        {% else %}
+        <div class="form-group">
+            <label for="username">Phone Number:</label>
+            <input type="text" id="username" name="username" class="form-control" value="{{ username }}" readonly><br></div>
+        {% endif %}
+         <div class="form-group">
+        <label for="user_email">Email:</label>
+        <input type="email" id="user_email" name="user_email" class="form-control" required><br></div>
+        <div class="form-group">
+        <label for="organization_name">Organization Name:</label>
+        <select id="organization_name" name="organization_name" class="form-control" required>
+            {% for org_name in organization_names %}
+                <option value="{{ org_name }}">{{ org_name }}</option>
+            {% endfor %}
+        </select><br></div>
+        <div class="form-group">
+        <label for="donation_amount">Donation Amount (in Rupees):</label>
+        <input type="number" id="donation_amount" name="donation_amount" min="1" class="form-control" required><br>
+        </div>
+        <button type="submit" class="btn btn-primary">Go to Payment</button>
+    </form>
+  
+    <p><a href="{{ url_for('home') }}"  class="log-in">Back to Home</a></p>
+  </div>
+    <footer class="copyright">
+      <p>copyright @ Charity Forum</p><br>
+       <p>Supporting lives to design and make a better world</p>
+    </footer>
+</body>
+</html>

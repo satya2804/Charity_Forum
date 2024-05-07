@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donations</title>
+</head>
+<body>
+    <h1>Donations</h1>
+    <ul>
+        {% for donation in donations %}
+        <li>ID: {{ donation.id }} - Organization: {{ donation.organization_name }} - Name: {{ donation.name }} - Email: {{ donation.email }} - Amount: {{ donation.amount }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

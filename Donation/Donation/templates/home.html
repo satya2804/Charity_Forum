@@ -1,0 +1,441 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('donate') }}">Donate</a></li>
+            <li><a href="{{ url_for('view_organizations') }}">View Organizations</a></li>
+            <li><a href="{{ url_for('new_organization') }}">New Organization</a></li>
+            <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+        </ul>
+    </nav>
+    
+    <h1>Welcome, {{ name }}!</h1>
+    {% if is_org %}
+        <p>You are logged in as an organization with email: {{ username }}.</p>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% elif username %}
+        <p>You are logged in as {{ username }}.</p>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+        <p>You are not logged in.</p>
+        <a href="{{ url_for('login') }}">Login</a> | <a href="{{ url_for('registration') }}">Register</a>
+    {% endif %}
+</body>
+</html>-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&family=Poppins:wght@200&display=swap"
+rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;900&family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Shantell+Sans&family=Tilt+Neon&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: "Ubuntu", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.log-in {
+  border: 0;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.navbar {
+  height: 90px;
+  background-color: #E5BEEC;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo i {
+  color: black;
+  font-size: 30px;
+}
+
+.navbar .logo a {
+  font-size: 24px;
+  font-weight: 700;
+  color: black;
+  margin-left: 12px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.menu-links {
+  display: flex;
+  gap: 24px;
+  border-right: 1px solid #999999;
+  padding-inline: 24px;
+}
+
+.menu-links a {
+  font-weight: 500;
+  color: black;
+  padding: 8px 16px;
+}
+.menu-links a:hover {
+  color: white;
+}
+.log-in {
+  font-weight: 500;
+  padding: 12px 22px;
+  background-color: transparent;
+  color: black;
+  border-radius: 10px;
+  border: 2px solid #0aa5ff;
+  transition: 0.2s;
+}
+.log-in:hover {
+  background-color: #0aa5ff;
+  color: white;
+}
+
+.menu-btn {
+  font-size: 32px;
+  color: white;
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: 53rem) {
+  .menu {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+}
+
+body{
+font-family: 'Poppins', sans-serif;
+}
+.container{
+max-width: 1152px;
+padding: 0 15px;
+margin: 0 auto;
+}
+.hero{
+padding-top: 5rem;
+padding-bottom: 3rem;
+}
+.hero .left img{
+width: 400px;
+}
+.hero .right {
+color: var(--white);
+margin-top: -7rem;
+}
+.hero .right h6{
+font-size: 1.6rem;
+color: var(--primary);
+margin-bottom: 0.5rem;
+}
+.hero .right h1{
+font-size: 4rem;
+font-weight: 100;
+line-height: 1.2;
+margin-bottom: 2rem;
+}
+.hero .right h1 span{
+color: var(--primary);
+}
+.hero .right p{
+line-height: 1.9;
+margin-bottom: 2rem;
+}
+
+.flex{
+display: flex;
+}
+.items-centre{
+align-items: center;
+}
+.justify-between{
+justify-content: space-between;
+}
+.justify-center{
+justify-content: center;
+}
+.justify-right{
+justify-content: right;
+}
+.flex-1{
+flex: 1;
+margin-left:20px;
+}
+
+
+
+ section{
+padding: 6rem;
+}
+.about
+{
+   background-color:pink;
+}
+section.about h1{
+margin-bottom: 1rem;
+font-size: 1.6rem;
+font-weight: 600;
+}
+section.about h1 span{
+color: var(--primary);
+}
+section.about h3{
+font-size: 1rem;
+margin-bottom: 1rem;
+font-weight: 600;
+}
+section.about p{
+font-family: 'Lato', sans-serif;
+color: var(--secondary);
+line-height: 1.9rem;
+margin-bottom: 2rem;
+}
+
+
+
+section.services{
+background: #F3E4C7;
+ height:520px;
+ padding-bottom:50px;
+}
+.services-head{
+color: rgb(10, 9, 9);
+text-align: center;
+margin-bottom: 1rem;
+line-height: 0.5rem;
+color: var(--primary);
+}
+.services-head + p{
+color: var(--white);
+font-family: 'Lato', sans-serif;
+margin-bottom: 1rem;
+text-align: center;
+margin-bottom: 4rem;
+font-weight: 400;
+}
+.card img{
+width: 150px;
+background:white;
+}
+section.services .card-grid{
+display: grid;
+grid-template-columns: repeat(3,1fr);
+column-gap: 2rem;
+}
+section.services .card-grid .card{
+background: var(--white);
+padding: 4rem 3rem;
+position: relative;
+text-align: center;
+transition: all .2s ease;
+}
+section.services .card-grid .card img{
+position: absolute;
+top: -1.5rem;
+left: 50%;
+transform: translateX(-50%);
+color: var();
+}
+section.services .card-grid .card h2{
+font-weight: 600;
+font-size: 1.2rem;
+margin-bottom: 0.5rem;
+}
+section.services .card-grid .card:hover{
+background: var(--primary);
+}
+section.services .card-grid .card:hover h2{
+color: var(--white);
+}
+
+footer {
+  background-color: #f5f5f5;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.social-media {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.social-media li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-media li a {
+  width: 32px;
+  height: 32px;
+  display: block;
+  background-size: cover;
+}
+
+ul
+{
+  list-style-type: none;
+}
+
+
+
+
+</style>
+  </head>
+<body>
+    <nav class="navbar">
+      <div class="logo">
+<i class="fa-solid fa-hand-holding-heart"></i>
+        <a href="#">Charity Forum</a>
+      </div>
+      <div class="menu">
+        <div class="menu-links">
+          <a href="{{ url_for('home') }}">Home</a>
+          <a href="#about">About Us</a>
+          <a href="{{ url_for('donate') }}">Donate</a>
+          <a href="{{ url_for('view_organizations') }}">The Org.</a>
+          <a href="{{ url_for('new_organization') }}">New Organisation</a>
+	        <a href="{{ url_for('contact_us') }}">Contact Us</a>
+        </div>
+        
+        <a class="log-in" href="{{ url_for('login') }}">Log In</a>
+            
+      </div>
+      <div class="menu-btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </nav>
+
+
+       <div class="hero flex items-centre justify-between">
+<div class="left flex-1 justify-center">
+<img src="../static/charity.png">
+</div>
+<div class="right flex-1">
+<h6>CHARITY FORUM</h6>
+    <h1>Welcome, {{ name }}!</h1>
+    {% if is_org %}
+        <p>You are logged in as an organization with email: {{ username }}.</p>
+        <a class="log-in" href="{{ url_for('logout') }}">Logout</a>
+    {% elif username %}
+        <p>You are logged in as {{ username }}.</p>
+        <a class="log-in" href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+        <p>You are not logged in.</p>
+        <a class="log-in"  href="{{ url_for('login') }}">Log In</a>
+        <a  class="log-in" href="{{ url_for('registration') }}">Register</a>
+    {% endif %}
+</div>
+</div>
+
+<div id="about">
+<section class="about" >
+  <div class="container flex items-centre">
+  <div class="left flex-1 justify-right">
+  <img src="../static/about.png" height="400px"  width="500px"alt="pic">
+  </div>
+  <div class="right flex-1">
+  <h1>About <span>US</span></h1>
+  <h2>CHARITY FORUM</h2>
+  <p>Charity Forum is a centralized platform that accepts donations and distributes them to a variety of different organizations with which we have connected to. This website easily lets people make In-Kind donations such as redistributing surplus food, water, clothing, books, and medical supplies to individuals who are in need.
+  <br>
+  <strong>The Vision of The Charity Forum:</strong><br>
+  Our Vision is to provide a platform that enables individuals and organizations to create positive change in their communities. Our platform connects people with the charities they care about and provides them with the tools they need to make a positive impact.</p>
+  </div>
+  </div>
+  </section>
+  </div>
+  
+  <section class="services">
+  <div class="container">
+  <h1 class="services-head">Services</h1>
+  <p>All your needs... covered.</p>
+  <div class="card-grid">
+  <div class="card">
+  <img src="../static/FA.png">
+  <h2>Financial assistance</h2>
+  </div>
+  <div class="card">
+  <img src="../static/FOA.png">
+  <h2>Food assistance</h2>
+  
+  </div>
+  <div class="card">
+  <img src="../static/HA.png">
+  <h2>Housing assistance</h2>
+  </div><center>
+  <div class="card" id="xy">
+  <img src="../static/MA.png">
+  <h2>Medical assistance</h2>
+  </div>
+  </div>
+  </div>
+  </section>
+  <center>
+  
+  <footer>
+    <strong><p>Copyright &copy; 2023 Charity Forum. All rights reserved.</p></strong>
+    <ul>
+      <li > <a href="#about">About Us</a></li>
+      <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+    </ul>
+    <ul>
+    <button type="button" class="btn btn-outline-light btn-lg download-btn"><i class="fab fa-linkedin"></i><a class="apple linked" href="https://www.linkedin.com/in/dinesh-kapu-207399243"><b>Linked-In</b></a></button>
+      <button type="button" class="btn btn-outline-light btn-lg download-btn"><i class="fa-brands fa-github"></i><a class="android" href="https://github.com/DineshKapu"><b>Github</b></a></button>
+  <button type="button" class="btn btn-outline-light btn-lg download-btn"><i class="fa-solid fa-envelope"></i><a class="android" href="mailto:dineshkapu18@gmail.com"><b>EMAIL</b></a></button></ul>
+  </footer></center>
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </body>
+  </body>
+  </html>
+</body>
+</html> 

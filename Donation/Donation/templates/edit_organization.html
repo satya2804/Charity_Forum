@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Organization</title>
+</head>
+<body>
+    <h1>Edit Organization</h1>
+    <form action="{{ url_for('edit_organization', email=organization.email) }}" method="post">
+        <label for="organization_name">Organization Name:</label>
+        <input type="text" name="organization_name" value="{{ organization.organization_name }}" required><br>
+        <label for="password">Password

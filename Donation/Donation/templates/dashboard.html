@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to the Admin Dashboard</h1>
+    <ul>
+        <li><a href="{{ url_for('list_users') }}">Users</a></li>
+        <li><a href="{{ url_for('list_donations') }}">Donations</a></li>
+        <li><a href="{{ url_for('list_organizations') }}">Organizations</a></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Donation</title>
+</head>
+<body>
+    <h1>Edit Donation</h1>
+    <form action="{{ url_for('edit_donation', donation_id=donation.id) }}" method="post">
+        <label for="organization_name">Organization Name:</label>
+        <input type="text" name="organization_name" value="{{ donation.organization_name }}" required><br>
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="{{ donation.name }}" required><br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="{{ donation.email }}" required><br>
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" step="0.01" value="{{ donation.amount }}" required><br>
+        <label for="username">Username:</label>
+        <input type="text" name="username" value="{{ donation.username }}" required><br>
+        <input type="submit" value="Save Changes">
+    </form>
+</body>
+</html>
